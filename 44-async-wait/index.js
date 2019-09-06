@@ -15,14 +15,17 @@ function readFilePromise(path) {
 }
 
 async function run() {
-	var song1 = await readFilePromise('song1.txt');
-	var song2 = await readFilePromise('song2.txt');
-
-	return [song1, song2];
+	// var song1 = await readFilePromise('song1.txt');
+	// var song2 = await readFilePromise('song2.txt');
+	var result = await Promise.all([
+		readFilePromise('song1.txt'),
+		readFilePromise('song2.txt')
+		]);
+	return result;
 }
 
 run().then(function (data) {
-	console.log(data);
+	console.log("aaaa",data);
 }).catch(function (err) {
 	console.log(err);
 })
